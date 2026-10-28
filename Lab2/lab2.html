@@ -1,0 +1,68 @@
+<head>
+<h1>Personal Profile Page</h1>
+  <style>
+	
+    h1 {
+      color: purple;
+      text-align: center;
+	  font-size:32px;
+    }
+  </style>
+</head>
+
+<p style="color: gray;">Fields marked * are required. This is a front-end demo; it does not send or store your information.</p>
+<hr>
+<table border="1">
+<tr>
+
+<th>Name</th>
+<th>Age</th>
+<th>Occupation</th>
+</tr>
+<tr>
+
+<td>John Doe</td>
+<td>24</td>
+<td>Doctor</td>
+</tr>
+<tr>
+
+<td>Ellena Joe</td>
+<td>23</td>
+<td>Singer</td>
+</tr>
+<tr>
+
+<td>Jane Smith</td>
+<td>20</td>
+<td>Pilot</td>
+</tr>
+</table>
+<form style="background-color:cyan; padding:30px;width:200; " action="/Register" method="post">
+  <label for="name">Name *</label>
+  <br>
+  <input type="text" id="name"name="name"placeholder="First and last name" required>
+  <br><br>
+  <label for="email">Email *</label>
+  <br>
+  <input type="email" id="email"name="email"placeholder="you@example.com" required>
+  <br><br>
+  <label for="gender">Gender *</label>
+  <br>
+  <input type="radio" id="male" name="gender" value="male" required>
+  <label for="male">Male</label><br>
+  <input type="radio" id="female" name="gender" value="female" required>
+  <label for="female">Female</label><br>
+  <br>	
+  <label for="Hobby"><strong>Favourite hobbies *</strong></label>
+  <br>
+  <input type="checkbox" id="hobby1" name="hobby1" value="reading" >
+  <label for="hobby1">Reading</label><br>
+  <input type="checkbox" id="hobby2" name="hobby2" value="sports" >
+  <label for="hobby2">Sports</label><br>
+  <input type="checkbox" id="hobby3" name="hobby3" value="gaming" >
+  <label for="hobby3">Gaming</label><br>
+  <br><br>
+  <button type="submit" style="background-color: blue; color:white">Register</button>
+  <button type="reset" style="background-color: gray">Reset</button>
+</form>
