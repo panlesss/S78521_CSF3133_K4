@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket Booking</title>
+</head>
+<body>
+    <!--
+        Part 1: Error Identification in Given Code
+        Error 1 (Line 1): Incomplete DOCTYPE declaration "<!DOCTYPE>"; corrected to "<!DOCTYPE html>".
+        Error 2 (Line 9): Improperly nested tags "<h1>e-Ticket <span>Your Campus Cinema</h1></span>"; closed <span> before </h1> as "<h1>e-Ticket <span>Your Campus Cinema</span></h1>".
+        Error 3 (Line 11 & Line 36): Inline element "<span id="content">...</span>" was used to wrap block-level elements (<h2>, <p>, <form>); changed to block element "<div id="content">...</div>".
+        Error 4 (Line 13): Unescaped less-than symbol "<" and missing semicolon in "&amp" inside "<p>Promotion: tickets < RM10 for students &amp staff!</p>"; fixed to "&lt;" and "&amp;".
+        Error 5 (Line 14): Form oninput calculation "adult.value + child.value" concatenated strings (e.g., "2" + "3" = "23") instead of adding numbers; fixed using Number(adult.value) + Number(child.value).
+        Error 6 (Line 18): Misspelled attribute type="emial" (and missing required validation) on the email input allowed invalid emails like "myemail"; fixed to type="email" and added required.
+        Error 7 (Line 22 & Line 23): Mismatched datalist reference — input had list="movies" while <datalist> had id="movielist", preventing movie suggestions from appearing; aligned both to "movielist".
+        Error 8 (Line 28 & Line 30): Missing min="0" attribute on the adult and child number inputs; added min="0" to prevent negative ticket quantities.
+        Error 9 (Line 32): Range input had reversed bounds min="5" max="1", causing the slider to behave strangely; corrected to min="1" max="5" step="1".
+        Error 10 (Line 33): <output> element had for="adult kid", referencing a non-existent id "kid" instead of "child"; corrected to for="adult child".
+        Error 11 (Line 38): Incorrect uppercase entity "&Copy;" prevented the copyright symbol from rendering (HTML entities are case-sensitive); corrected to lowercase "&copy;".
+        Error 12 (Line 41 & Line 55): Stray text and duplicate closing tags "54 </body>" and "55 </html>" at the end of the document; removed duplicate tags.
+    -->
+
+    <!-- Header Section -->
+    <div id="header">
+        <h1>e-Ticket <span>Your Campus Cinema</span></h1>
+    </div>
+
+    <!-- Main Content Section (Fixed from <span> to <div>) -->
+    <div id="content">
+        <h2>Book Your Ticket</h2>
+        <p>Promotion: tickets &lt; RM10 for students &amp; staff!</p>
+
+        <!-- Booking Form with Dynamic Total Tickets and Total Price Calculation -->
+        <form action="booking.php" oninput="total.value = Number(adult.value) + Number(child.value); price.value = (Number(adult.value) * 12) + (Number(child.value) * 8)">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter your name" required autofocus><br>
+
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email" placeholder="e.g. student@umt.edu.my" required><br>
+
+            <!-- Part 2 (Item 6): Added Phone Number input (type="tel", placeholder, required) and Show Time input (type="time") -->
+            <label for="phone">Phone number:</label>
+            <input type="tel" id="phone" name="phone" placeholder="e.g. 012-3456789" required><br>
+
+            <label for="date">Show date:</label>
+            <input type="date" id="date" name="date"><br>
+
+            <label for="time">Show time:</label>
+            <input type="time" id="time" name="time"><br>
+
+            <!-- Movie Selection Linked to Datalist -->
+            <label for="movie">Movie:</label>
+            <input id="movie" name="movie" list="movielist" placeholder="Select or type a movie"><br>
+            <datalist id="movielist">
+                <option value="Space Rangers"></option>
+                <option value="Kampung Comedy"></option>
+                <option value="Cyber Heist 2026"></option>
+            </datalist>
+
+            <!-- Ticket Quantity Inputs -->
+            <label for="adult">Adult tickets (RM 12 each):</label>
+            <input type="number" id="adult" name="adult" min="0" value="0"><br>
+
+            <label for="child">Child tickets (RM 8 each):</label>
+            <input type="number" id="child" name="child" min="0" value="0"><br>
+
+            <!-- Service Rating Slider (Fixed min="1" max="5") -->
+            <label for="rating">Rate our service:</label>
+            <input type="range" id="rating" name="rating" min="1" max="5" step="1" value="5"><br>
+
+            <!-- Output 1: Total Tickets -->
+            Total tickets: <output name="total" id="total" for="adult child">0</output><br>
+
+            <!-- Part 2 (Item 7): Added Second <output name="price"> for Total Price (Adult = RM 12, Child = RM 8) -->
+            Total price: RM <output name="price" id="price" for="adult child">0</output><br>
+
+            <input type="submit" value="Book Now">
+        </form>
+    </div>
+
+    <!-- Part 2 (Item 5): Added Sidebar Section titled "Now Showing" with at least 3 movies using <strong>, <span>, and <a> -->
+    <div id="sidebar">
+        <h2>Now Showing</h2>
+        <ul>
+            <li>
+                <strong>Space Rangers</strong> &ndash;
+                <span>Rating: PG-13</span> &ndash;
+                <a href="https://www.youtube.com/results?search_query=Space+Rangers+Trailer" target="_blank" rel="noopener">Watch Trailer</a>
+            </li>
+            <li>
+                <strong>Kampung Comedy</strong> &ndash;
+                <span>Rating: U (General)</span> &ndash;
+                <a href="https://www.youtube.com/results?search_query=Kampung+Comedy+Trailer" target="_blank" rel="noopener">Watch Trailer</a>
+            </li>
+            <li>
+                <strong>Cyber Heist 2026</strong> &ndash;
+                <span>Rating: P13</span> &ndash;
+                <a href="https://www.youtube.com/results?search_query=Cyber+Heist+Trailer" target="_blank" rel="noopener">Watch Trailer</a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Part 2 (Item 8): Footer Section with Corrected &copy; and New Promotional Line Using &reg;, &lt;, and &amp; -->
+    <div id="footer">
+        <p>&copy; 2026 CineKampus. All rights reserved.</p>
+        <p>e-Ticket&reg; &ndash; Campus Cinema &lt; RM10 every Tuesday &amp; Student Matinee Deals!</p>
+    </div>
+</body>
+</html>

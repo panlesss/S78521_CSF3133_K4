@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusBake&reg; - Campus Bakery Online Order Page</title>
+</head>
+<body>
+
+    <!-- 1. Header Section: Displays the bakery brand name -->
+    <div id="header">
+        <h1>CampusBake&reg; <span>&mdash; Freshly Baked Goodness on Campus Every Day!</span></h1>
+    </div>
+
+    <!-- 2. Navigation Section for user to navigate through the page -->
+    <div id="nav">
+        <p>
+            <a href="#content">About Us</a> |
+            <a href="#sidebar">Price List</a> |
+            <a href="#order-form">Order Form</a> |
+            <a href="#footer">Contact &amp; Info</a>
+        </p>
+    </div>
+
+    <!-- 3. Main Content Section: Contains the main content(forms,information) -->
+    <div id="content">
+        <h2>Welcome to CampusBake&reg; Pre-Order Portal</h2>
+
+        <!-- Introduction paragraph using four different inline elements: <strong>, <em>, <span>, and <a> -->
+        <p>
+            Welcome to <strong>CampusBake&reg;</strong>, your favourite student-run artisanal bakery at
+            <em>Universiti Malaysia Terengganu</em>! We prepare <span>100% oven-fresh pastries and custom cakes</span>
+            daily so you can skip the queue between lectures and <a href="#order-form">place your pre-order online</a>
+            with instant price calculation before submitting.
+        </p>
+
+        <h3>Why Pre-Order With Us?</h3>
+        <ul>
+            <li>Guaranteed fresh batch ready at your chosen pick-up time.</li>
+            <li>Customisable flavours, icing colours, and sweetness levels.</li>
+            <li>Special student bundle deals for campus events and study groups.</li>
+        </ul>
+
+        <!-- Order Form Section (HTML5 Form Elements) & Price Calculator (output) -->
+        <div id="order-form">
+            <h2>Online Pre-Order Form</h2>
+            <form action="#order-form" method="get" oninput="totalPrice.value = (Number(cupcakes.value) * 3) + (Number(slices.value) * 5)">
+
+                <!-- Customer Details -->
+                <p>
+                    <label for="customerName">Customer Name:</label><br>
+                    <input type="text" id="customerName" name="customerName" placeholder="Enter your full name" required autofocus>
+                </p>
+
+                <p>
+                    <label for="phone">Phone Number:</label><br>
+                    <input type="tel" id="phone" name="phone" placeholder="e.g. 012-3456789" required>
+                </p>
+
+                <p>
+                    <label for="email">E-mail Address:</label><br>
+                    <input type="email" id="email" name="email" placeholder="e.g. student@umt.edu.my" required>
+                </p>
+
+                <!-- Pick-up Schedule -->
+                <p>
+                    <label for="pickupDate">Pick-up Date:</label><br>
+                    <input type="date" id="pickupDate" name="pickupDate">
+                </p>
+
+                <p>
+                    <label for="pickupTime">Pick-up Time:</label><br>
+                    <input type="time" id="pickupTime" name="pickupTime">
+                </p>
+
+                <!-- Bakery Customisation Options -->
+                <p>
+                    <label for="flavour">Cake / Cupcake Flavour:</label><br>
+                    <input type="text" id="flavour" name="flavour" list="flavourList" placeholder="Select or type a flavour">
+                    <datalist id="flavourList">
+                        <option value="Classic Chocolate Fudge"></option>
+                        <option value="Madagascar Vanilla Bean"></option>
+                        <option value="Red Velvet Cream Cheese"></option>
+                        <option value="Pandan Gula Melaka"></option>
+                        <option value="Matcha Green Tea"></option>
+                    </datalist>
+                </p>
+
+                <p>
+                    <label for="icingColor">Icing Colour:</label><br>
+                    <input type="color" id="icingColor" name="icingColor" value="#ff6699">
+                </p>
+
+                <p>
+                    <label for="sweetness">Sweetness Level (1 = Less Sweet, 5 = Extra Sweet):</label><br>
+                    <input type="range" id="sweetness" name="sweetness" min="1" max="5" step="1" value="3">
+                </p>
+
+                <!-- Price Calculator Inputs and Dynamic Element -->
+                <h3>Order Quantity &amp; Instant Price Calculator</h3>
+
+                <p>
+                    <label for="cupcakes">Cupcakes (RM 3.00 each):</label><br>
+                    <input type="number" id="cupcakes" name="cupcakes" min="0" value="0">
+                </p>
+
+                <p>
+                    <label for="slices">Cake Slices (RM 5.00 each):</label><br>
+                    <input type="number" id="slices" name="slices" min="0" value="0">
+                </p>
+
+                <p>
+                    <strong>Total Price (RM): <output name="totalPrice" id="totalPrice" for="cupcakes slices">0</output></strong>
+                </p>
+
+                <!-- Submit Button -->
+                <p>
+                    <input type="submit" value="Submit Pre-Order">
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Sidebar Section-->
+    <div id="sidebar">
+        <h2>CampusBake&reg; Price List &amp; Deals</h2>
+        <ul>
+            <li>Artisanal Cupcake (Each): RM 3.00 &nbsp;|&nbsp; Approx. &pound;0.55 / &euro;0.65</li>
+            <li>Signature Cake Slice (Each): RM 5.00 &nbsp;|&nbsp; Approx. &pound;0.90 / &euro;1.05</li>
+            <li>Whole Custom Cake (8-inch): RM 45.00 &nbsp;|&nbsp; Approx. &pound;8.10 / &euro;9.50</li>
+            <li>Student Promo: Orders &gt; 10 pieces get a <strong>FREE</strong> iced coffee drink!</li>
+            <li>Express Pick-up: Preparation time &lt; 30 minutes for standard cupcake orders.</li>
+        </ul>
+    </div>
+
+    <!-- Footer Section-->
+    <div id="footer">
+        <p>
+            &copy; 2026 CampusBake&reg; Bakery &amp; Cafe.&nbsp;&nbsp;All rights reserved.<br>
+            International Student Card Accepted (Rates: 1 GBP &pound; &asymp; RM 5.50 &nbsp;|&nbsp; 1 EUR &euro; &asymp; RM 4.75).
+        </p>
+    </div>
+
+   
+</body>
+</html>
